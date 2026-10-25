@@ -12,7 +12,7 @@ Scores public companies on how likely they are to become acquisition targets, us
 | Companies | 40 (20 acquired 2021-2023, 20 comparable independents) |
 | Top features | operating margin, net margin, share of negative headlines, revenue growth, R&D intensity, average sentiment |
 
-Run with `python src/real_pipeline.py` (needs internet + torch, e.g. Colab).
+Outputs: `data/real_features.csv`, `outputs/real_rankings.csv`, `outputs/real_metrics.json`. Run with `python src/real_pipeline.py` (needs internet + torch, e.g. Colab).
 
 ## Data
 

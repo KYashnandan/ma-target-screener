@@ -1,0 +1,41 @@
+company,sector,was_acquired,acq_score_oof
+ForgeRock,Identity Security SaaS,1,0.9751857966184616
+Anaplan,Planning SaaS,1,0.9375371485948563
+Splunk,Data/Security SaaS,1,0.8980107009410858
+Nuance Communications,AI/Speech Software,1,0.8293199688196182
+Coupa Software,Procurement SaaS,1,0.8126634955406189
+Take-Two Interactive,Gaming,0,0.7942404001951218
+Change Healthcare,Healthcare IT,1,0.793989896774292
+Slack Technologies,Collaboration SaaS,1,0.7740175575017929
+HubSpot,Marketing SaaS,0,0.7657593861222267
+SailPoint Technologies,Identity Security SaaS,1,0.7430102974176407
+UserTesting,UX Research SaaS,1,0.7311069220304489
+Ping Identity,Identity Security SaaS,1,0.7018923386931419
+Zynga,Gaming,1,0.6674429476261139
+Cerner Corporation,Healthcare IT,1,0.665641613304615
+Qualtrics International,Experience Mgmt SaaS,1,0.6574763804674149
+Zendesk,Customer Support SaaS,1,0.6280693262815475
+Citrix Systems,Enterprise Software,1,0.5928714573383331
+CrowdStrike Holdings,Cybersecurity,0,0.5701953396201134
+Atlassian,Collaboration SaaS,0,0.538111723959446
+Twitter,Social Media,1,0.46913428977131844
+Roper Technologies,Diversified Software,0,0.4351396933197975
+Mandiant,Cybersecurity,1,0.432816244661808
+Palo Alto Networks,Cybersecurity,0,0.3995087593793869
+Trimble,Enterprise Software,0,0.3627828098833561
+Activision Blizzard,Gaming,1,0.3036276698112488
+Adobe,Enterprise Software,0,0.302032969892025
+Datadog,Data/Security SaaS,0,0.2924344055354595
+Salesforce,Collaboration SaaS,0,0.26871538534760475
+Paylocity Holding,HR SaaS,0,0.2516606729477644
+Datto Holding,MSP Software,1,0.24525844678282738
+Autodesk,Enterprise Software,0,0.22309642657637596
+Workday,Enterprise Software,0,0.19713585637509823
+Paycom Software,HR SaaS,0,0.19605229422450066
+Fortinet,Cybersecurity,0,0.18867627158761024
+Cadence Design Systems,Semiconductor Software,0,0.1321243718266487
+Intuit,Fintech SaaS,0,0.1263130223378539
+Synopsys,Semiconductor Software,0,0.1117565780878067
+VMware,Enterprise Software,1,0.08665180951356888
+Veeva Systems,Healthcare IT,0,0.0663564782589674
+ServiceNow,Enterprise Software,0,0.037249431712552905
