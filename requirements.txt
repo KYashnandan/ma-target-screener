@@ -1,0 +1,10 @@
+pandas>=2.0
+numpy>=1.24
+scikit-learn>=1.3
+xgboost>=2.0
+matplotlib>=3.7
+requests>=2.31
+
+# Real FinBERT sentiment (recommended: run in Colab or a machine with >4GB free disk)
+transformers>=4.35
+torch>=2.0
