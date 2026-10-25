@@ -14,18 +14,23 @@ from data_ingestion import ACQUIRED_COMPANIES, STANDALONE_COMPANIES
 
 UA = {"User-Agent": "Yash KYashnandan research yash@example.com"}  # EDGAR requires contact UA: put your real email
 TAGS = {
- "rev": ["Revenues", "RevenueFromContractWithCustomerExcludingAssessedTax", "SalesRevenueNet"],
+ "rev": ["Revenues", "RevenueFromContractWithCustomerExcludingAssessedTax", "RevenueFromContractWithCustomerIncludingAssessedTax", "SalesRevenueNet"],
  "opinc": ["OperatingIncomeLoss"], "ni": ["NetIncomeLoss"],
- "debt": ["LongTermDebt", "LongTermDebtNoncurrent"], "eq": ["StockholdersEquity"],
+ "debt": ["LongTermDebt", "LongTermDebtNoncurrent", "LongTermDebtAndCapitalLeaseObligations", "ConvertibleNotesPayable"], "eq": ["StockholdersEquity"],
  "cash": ["CashAndCashEquivalentsAtCarryingValue"], "assets": ["Assets"],
  "rnd": ["ResearchAndDevelopmentExpense"],
 }
+
+ENT = {}
 
 def get(url, **kw):
     time.sleep(0.2)
     r = requests.get(url, headers=UA, timeout=30, **kw); r.raise_for_status(); return r
 
+CIK_FIX = {"Palo Alto Networks": "0001327567", "Roper Technologies": "0000882835", "Take-Two Interactive": "0000946581", "Nuance Communications": "0001002517"}
+
 def find_cik(name):
+    if name in CIK_FIX: return CIK_FIX[name]
     q = re.sub(r"\b(Inc|Corporation|Holdings?|Holding|Technologies|International|Systems)\b", "", name).strip()
     t = get("https://www.sec.gov/cgi-bin/browse-edgar", params={"company": q, "type": "10-K", "dateb": "", "owner": "include", "count": 5, "output": "atom"}).text
     m = re.search(r"CIK=(\d{10})", t) or re.search(r"data/(\d+)/", t)
@@ -45,11 +50,12 @@ def annual(facts, key):
     return pd.Series(dtype=float)
 
 def at(s, end_limit, back=0):
+    if s.empty: return np.nan
     s = s[s.index <= end_limit]
     return s.iloc[-1 - back] if len(s) > back else np.nan
 
 def fin_features(cik, ref):
-    facts = get(f"https://data.sec.gov/api/xbrl/companyfacts/CIK{cik}.json").json()["facts"]
+    j = get(f"https://data.sec.gov/api/xbrl/companyfacts/CIK{cik}.json").json(); facts = j["facts"]; ENT[cik] = j.get("entityName")
     lim = f"{ref}-12-31"; S = {k: annual(facts, k) for k in TAGS}
     rev, rev0 = at(S["rev"], lim), at(S["rev"], lim, 1)
     return dict(
@@ -78,7 +84,7 @@ def main():
             sc = [(r["score"] if r["label"] == "positive" else -r["score"] if r["label"] == "negative" else 0.0) for r in fb(hl)] if hl else []
             f.update(avg_sent=np.mean(sc) if sc else np.nan, min_sent=min(sc) if sc else np.nan,
                      neg_share=np.mean([s < -0.3 for s in sc]) if sc else np.nan, n_headlines=len(sc))
-            rows.append(dict(company=name, sector=sector, was_acquired=y, ref_year=ref, cik=cik, **f)); print("ok", name, len(sc))
+            rows.append(dict(company=name, sector=sector, was_acquired=y, ref_year=ref, cik=cik, **f)); print("ok", name, "|", ENT.get(cik), "|", len(sc), "headlines")
         except Exception as e:
             print("SKIP", name, "->", e)
     df = pd.DataFrame(rows); df.to_csv("data/real_features.csv", index=False)
