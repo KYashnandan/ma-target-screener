@@ -1,20 +1,37 @@
-# M&A Target Screener
+# DealRadar: Macro-Resilient M&A Target Screener
 
-Predicts which public companies are likely acquisition targets by combining
-company fundamentals with news-sentiment / alt-data signals, scored by an
-XGBoost classifier.
+Scores public companies on how likely they are to become acquisition targets, using SEC financials and news sentiment.
 
-**Stack:** Python, pandas, XGBoost, FinBERT (HuggingFace `ProsusAI/finbert`), scikit-learn, matplotlib.
+**Stack:** Python, pandas, XGBoost, FinBERT (`ProsusAI/finbert`), SEC EDGAR XBRL API, scikit-learn.
 
-## Why this project
+## Results (real data, 40 companies)
 
-M&A advisory and corporate development teams spend significant analyst time
-manually screening for takeover candidates. This project prototypes that
-screening step: instead of reading news and skimming 10-Ks by hand, score
-every company in a universe on an "acquisition likelihood" from 0-1, ranked
-and explainable by feature.
+| Metric | Value |
+|---|---|
+| Repeated 5-fold CV AUC | **0.81 +/- 0.06** |
+| Companies | 40 (20 acquired 2021-2023, 20 comparable independents) |
+| Top features | operating margin, net margin, share of negative headlines, revenue growth, R&D intensity, average sentiment |
 
-## Architecture
+Run with `python src/real_pipeline.py` (needs internet + torch, e.g. Colab).
+
+## Data
+
+- **Labels:** real outcomes. 20 companies acquired or taken private in 2021-2023 (Twitter, Slack, Splunk, VMware, Activision Blizzard, ...) vs 20 comparable software/gaming companies that stayed public.
+- **Financials:** SEC EDGAR XBRL filings for the fiscal year before the deal closed (2022 for independents): revenue growth, operating and net margin, debt-to-equity, cash-to-assets, R&D intensity, size.
+- **News:** up to 25 Google News headlines per company for the same year, scored by FinBERT (positive minus negative probability). Features: average, minimum, and share of negative headlines.
+- **Evaluation:** repeated stratified 5-fold CV; rankings use out-of-fold scores.
+
+## Limitations
+
+- Only 40 companies, so the AUC has a wide error band and is not a production claim.
+- Headline volume varies by company (Google News RSS), and for some deals the snapshot year overlaps the announcement date, so a little leakage is possible.
+- No price, ownership or valuation features (they need paid data).
+
+## Next steps
+
+Larger universe (500+), time-based validation, exact pre-announcement windows, a licensed news feed, probability calibration, sector-relative valuation features.
+
+## Architecture (offline demo)
 
 ```
                  ┌────────────────────┐
@@ -48,77 +65,6 @@ and explainable by feature.
                  └────────────────────┘
 ```
 
-## Data & methodology
+## Offline demo (synthetic data)
 
-- **Company universe (40 companies, real names):** 20 companies that were
-  genuinely acquired/taken private in the 2021-2023 wave (Twitter, Slack,
-  Splunk, VMware, Activision Blizzard, Cerner, etc.) labeled `1`, and 20
-  comparable public companies in similar sectors that remained standalone
-  through the same window (Adobe, Salesforce, CrowdStrike, Datadog, etc.)
-  labeled `0`. The **outcome labels are real, documented facts**.
-- **Fundamental features (growth, margin, leverage, ownership, valuation
-  gap) are synthetically generated** from sector-conditioned distributions,
-  not pulled from a live filings feed — disclosed openly here and in code
-  comments. This was a deliberate choice to move fast on a demo without
-  needing SEC EDGAR / Bloomberg API access. `data_ingestion.py` is written
-  so `generate_synthetic_fundamentals()` can be swapped for a real
-  EDGAR/yfinance/Refinitiv puller without touching the rest of the pipeline.
-- **News sentiment** uses a small sample headline corpus per company, scored
-  by FinBERT (`ProsusAI/finbert`) — a BERT model fine-tuned specifically on
-  financial text, producing positive/negative/neutral probabilities that are
-  converted into a signed sentiment score.
-- **Fallback:** this repo was built in a disk-constrained sandbox that
-  couldn't fit the torch/CUDA dependency stack (~3-4GB). `sentiment_finbert.py`
-  auto-detects whether `transformers`/`torch` are installed; if not, it falls
-  back to a small finance-lexicon scorer and **clearly logs that it is not
-  using FinBERT**. On a normal machine with torch installed, it silently uses
-  the real model — no code changes needed.
-
-## Results (on this demo dataset)
-
-| Metric | Value |
-|---|---|
-| Test AUC | 1.00 |
-| Test Accuracy | 0.90 |
-| Test Precision | 0.83 |
-| Test Recall | 1.00 |
-| Test F1 | 0.91 |
-
-Top predictive features: news sentiment (avg + minimum), EBITDA margin,
-revenue growth, institutional ownership.
-
-**Honest caveat:** N=40 companies with a 25% test split (10 companies) is a
-small-sample demo, not a production validation. Perfect/near-perfect AUC on
-10 test rows is expected here and should not be quoted as "the model is
-99% accurate".
-
-## How to run
-
-```bash
-pip install -r requirements.txt
-cd src
-python data_ingestion.py        # build company + fundamentals dataset
-python news_headlines.py        # build sample news corpus
-python sentiment_finbert.py     # score headlines (FinBERT or fallback)
-python feature_engineering.py   # build final feature matrix
-python train_model.py           # train XGBoost, save metrics/plots
-python predict_targets.py       # produce ranked target leaderboard
-```
-
-Outputs land in `outputs/`: `target_rankings.csv`, `metrics.json`,
-`feature_importance.csv`, `roc_curve.png`, `feature_importance.png`.
-
-## Next steps for a production version
-
-1. Replace synthetic fundamentals with real EDGAR/10-K financial data.
-2. Pull live news via NewsAPI/RavenPack instead of the sample corpus.
-3. Expand the universe beyond 40 companies (ideally 500+) for a real
-   train/test split, and use time-based (walk-forward) validation instead
-   of random split, since M&A prediction is inherently a forecasting task.
-4. Calibrate the model's probability outputs (Platt scaling / isotonic)
-   since raw XGBoost probabilities are not well-calibrated on small data.
-5. Add sector-relative valuation multiples instead of absolute P/E, since
-   raw P/E isn't comparable across sectors.
-
-## Real-data version
-`src/real_pipeline.py` replaces the synthetic stages with SEC EDGAR XBRL financials (year before each deal), Google News headlines, and real FinBERT, evaluated with repeated 5-fold CV. Run on a machine with internet + torch (e.g. Colab). The synthetic pipeline above is the offline demo.
+The original pipeline (`data_ingestion.py` through `predict_targets.py`, run via `run_pipeline.sh`) uses real labels but synthetic financials, template headlines and a keyword sentiment fallback. It exists to show the full pipeline offline and its AUC of 1.0 on a 10-company split is not meaningful. The real-data results above are the ones to cite.
