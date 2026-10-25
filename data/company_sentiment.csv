@@ -1,0 +1,41 @@
+company,avg_news_sentiment,min_news_sentiment,n_headlines
+Activision Blizzard,-0.4394,-1.0,5
+Adobe,0.3655,0.127,2
+Anaplan,-0.38239999999999996,-1.0,5
+Atlassian,0.591,0.182,2
+Autodesk,0.3785,-0.039,2
+Cadence Design Systems,0.23199999999999998,-0.536,2
+Cerner Corporation,-0.47000000000000003,-1.0,5
+Change Healthcare,-0.31100000000000005,-1.0,5
+Citrix Systems,-0.29640000000000005,-1.0,5
+Coupa Software,-0.496,-1.0,5
+CrowdStrike Holdings,0.20450000000000002,-0.591,2
+Datadog,0.29000000000000004,-0.42,2
+Datto Holding,-0.3354,-1.0,5
+ForgeRock,-0.5072,-1.0,5
+Fortinet,0.4405,-0.096,2
+HubSpot,0.0705,-0.162,2
+Intuit,0.364,-0.069,2
+Mandiant,-0.41080000000000005,-1.0,5
+Nuance Communications,-0.635,-1.0,5
+Palo Alto Networks,0.6145,0.229,2
+Paycom Software,0.601,0.202,2
+Paylocity Holding,0.5865,0.173,2
+Ping Identity,-0.41479999999999995,-1.0,5
+Qualtrics International,-0.38239999999999996,-1.0,5
+Roper Technologies,0.3015,-0.341,2
+SailPoint Technologies,-0.2488,-1.0,5
+Salesforce,-0.053500000000000006,-0.099,2
+ServiceNow,0.52,0.34,2
+Slack Technologies,-0.33799999999999997,-1.0,5
+Splunk,-0.3186,-1.0,5
+Synopsys,0.265,-0.47,2
+Take-Two Interactive,0.24549999999999997,-0.342,2
+Trimble,0.397,-0.017,2
+Twitter,-0.25680000000000003,-1.0,5
+UserTesting,-0.5202,-1.0,5
+VMware,-0.39980000000000004,-1.0,5
+Veeva Systems,0.0905,-0.107,2
+Workday,0.433,-0.072,2
+Zendesk,-0.4484,-1.0,5
+Zynga,-0.43979999999999997,-1.0,5

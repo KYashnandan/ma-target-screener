@@ -1,0 +1,141 @@
+company,headline,sentiment_score,sentiment_method
+Mandiant,Mandiant shares jump on report of takeover interest from private equity,0.0,lexicon_fallback
+Mandiant,"Mandiant confirms it is exploring strategic alternatives, including a sale",-0.895,lexicon_fallback
+Mandiant,"Activist investor builds stake in Mandiant, pushes for board changes",-1.0,lexicon_fallback
+Mandiant,Mandiant reportedly in early talks with potential acquirer,-1.0,lexicon_fallback
+Mandiant,Mandiant reports quarterly revenue in line with analyst expectations,0.841,lexicon_fallback
+Ping Identity,Ping Identity shares jump on report of takeover interest from private equity,-0.347,lexicon_fallback
+Ping Identity,"Ping Identity confirms it is exploring strategic alternatives, including a sale",-0.979,lexicon_fallback
+Ping Identity,"Activist investor builds stake in Ping Identity, pushes for board changes",-0.531,lexicon_fallback
+Ping Identity,Ping Identity reportedly in early talks with potential acquirer,-1.0,lexicon_fallback
+Ping Identity,Ping Identity reports quarterly revenue in line with analyst expectations,0.783,lexicon_fallback
+Datto Holding,Datto Holding shares jump on report of takeover interest from private equity,0.171,lexicon_fallback
+Datto Holding,"Datto Holding confirms it is exploring strategic alternatives, including a sale",-0.875,lexicon_fallback
+Datto Holding,"Activist investor builds stake in Datto Holding, pushes for board changes",-0.963,lexicon_fallback
+Datto Holding,Datto Holding reportedly in early talks with potential acquirer,-1.0,lexicon_fallback
+Datto Holding,Datto Holding reports quarterly revenue in line with analyst expectations,0.99,lexicon_fallback
+Synopsys,Synopsys reports quarterly revenue in line with analyst expectations,1.0,lexicon_fallback
+Synopsys,Synopsys shares jump on report of takeover interest from private equity,-0.47,lexicon_fallback
+Zendesk,Zendesk shares jump on report of takeover interest from private equity,-0.16,lexicon_fallback
+Zendesk,"Zendesk confirms it is exploring strategic alternatives, including a sale",-1.0,lexicon_fallback
+Zendesk,"Activist investor builds stake in Zendesk, pushes for board changes",-1.0,lexicon_fallback
+Zendesk,Zendesk reportedly in early talks with potential acquirer,-1.0,lexicon_fallback
+Zendesk,Zendesk reports quarterly revenue in line with analyst expectations,0.918,lexicon_fallback
+Nuance Communications,Nuance Communications shares jump on report of takeover interest from private equity,-0.444,lexicon_fallback
+Nuance Communications,"Nuance Communications confirms it is exploring strategic alternatives, including a sale",-0.905,lexicon_fallback
+Nuance Communications,"Activist investor builds stake in Nuance Communications, pushes for board changes",-0.945,lexicon_fallback
+Nuance Communications,Nuance Communications reportedly in early talks with potential acquirer,-1.0,lexicon_fallback
+Nuance Communications,Nuance Communications reports quarterly revenue in line with analyst expectations,0.119,lexicon_fallback
+Trimble,Trimble reports quarterly revenue in line with analyst expectations,0.811,lexicon_fallback
+Trimble,Trimble shares jump on report of takeover interest from private equity,-0.017,lexicon_fallback
+Cadence Design Systems,Cadence Design Systems reports quarterly revenue in line with analyst expectations,1.0,lexicon_fallback
+Cadence Design Systems,Cadence Design Systems shares jump on report of takeover interest from private equity,-0.536,lexicon_fallback
+Take-Two Interactive,Take-Two Interactive reports quarterly revenue in line with analyst expectations,0.833,lexicon_fallback
+Take-Two Interactive,Take-Two Interactive shares jump on report of takeover interest from private equity,-0.342,lexicon_fallback
+Anaplan,Anaplan shares jump on report of takeover interest from private equity,-0.283,lexicon_fallback
+Anaplan,"Anaplan confirms it is exploring strategic alternatives, including a sale",-0.629,lexicon_fallback
+Anaplan,"Activist investor builds stake in Anaplan, pushes for board changes",-1.0,lexicon_fallback
+Anaplan,Anaplan reportedly in early talks with potential acquirer,-1.0,lexicon_fallback
+Anaplan,Anaplan reports quarterly revenue in line with analyst expectations,1.0,lexicon_fallback
+Autodesk,Autodesk reports quarterly revenue in line with analyst expectations,0.796,lexicon_fallback
+Autodesk,Autodesk shares jump on report of takeover interest from private equity,-0.039,lexicon_fallback
+Qualtrics International,Qualtrics International shares jump on report of takeover interest from private equity,0.039,lexicon_fallback
+Qualtrics International,"Qualtrics International confirms it is exploring strategic alternatives, including a sale",-0.978,lexicon_fallback
+Qualtrics International,"Activist investor builds stake in Qualtrics International, pushes for board changes",-1.0,lexicon_fallback
+Qualtrics International,Qualtrics International reportedly in early talks with potential acquirer,-0.973,lexicon_fallback
+Qualtrics International,Qualtrics International reports quarterly revenue in line with analyst expectations,1.0,lexicon_fallback
+Zynga,Zynga shares jump on report of takeover interest from private equity,-0.542,lexicon_fallback
+Zynga,"Zynga confirms it is exploring strategic alternatives, including a sale",-0.699,lexicon_fallback
+Zynga,"Activist investor builds stake in Zynga, pushes for board changes",-0.958,lexicon_fallback
+Zynga,Zynga reportedly in early talks with potential acquirer,-1.0,lexicon_fallback
+Zynga,Zynga reports quarterly revenue in line with analyst expectations,1.0,lexicon_fallback
+Datadog,Datadog reports quarterly revenue in line with analyst expectations,1.0,lexicon_fallback
+Datadog,Datadog shares jump on report of takeover interest from private equity,-0.42,lexicon_fallback
+Paycom Software,Paycom Software reports quarterly revenue in line with analyst expectations,1.0,lexicon_fallback
+Paycom Software,Paycom Software shares jump on report of takeover interest from private equity,0.202,lexicon_fallback
+Splunk,Splunk shares jump on report of takeover interest from private equity,-0.066,lexicon_fallback
+Splunk,"Splunk confirms it is exploring strategic alternatives, including a sale",-0.761,lexicon_fallback
+Splunk,"Activist investor builds stake in Splunk, pushes for board changes",-1.0,lexicon_fallback
+Splunk,Splunk reportedly in early talks with potential acquirer,-0.766,lexicon_fallback
+Splunk,Splunk reports quarterly revenue in line with analyst expectations,1.0,lexicon_fallback
+ForgeRock,ForgeRock shares jump on report of takeover interest from private equity,-0.236,lexicon_fallback
+ForgeRock,"ForgeRock confirms it is exploring strategic alternatives, including a sale",-0.929,lexicon_fallback
+ForgeRock,"Activist investor builds stake in ForgeRock, pushes for board changes",-1.0,lexicon_fallback
+ForgeRock,ForgeRock reportedly in early talks with potential acquirer,-0.955,lexicon_fallback
+ForgeRock,ForgeRock reports quarterly revenue in line with analyst expectations,0.584,lexicon_fallback
+Intuit,Intuit reports quarterly revenue in line with analyst expectations,0.797,lexicon_fallback
+Intuit,Intuit shares jump on report of takeover interest from private equity,-0.069,lexicon_fallback
+Twitter,Twitter shares jump on report of takeover interest from private equity,0.315,lexicon_fallback
+Twitter,"Twitter confirms it is exploring strategic alternatives, including a sale",-0.599,lexicon_fallback
+Twitter,"Activist investor builds stake in Twitter, pushes for board changes",-1.0,lexicon_fallback
+Twitter,Twitter reportedly in early talks with potential acquirer,-1.0,lexicon_fallback
+Twitter,Twitter reports quarterly revenue in line with analyst expectations,1.0,lexicon_fallback
+HubSpot,HubSpot reports quarterly revenue in line with analyst expectations,0.303,lexicon_fallback
+HubSpot,HubSpot shares jump on report of takeover interest from private equity,-0.162,lexicon_fallback
+Citrix Systems,Citrix Systems shares jump on report of takeover interest from private equity,-0.034,lexicon_fallback
+Citrix Systems,"Citrix Systems confirms it is exploring strategic alternatives, including a sale",-0.56,lexicon_fallback
+Citrix Systems,"Activist investor builds stake in Citrix Systems, pushes for board changes",-0.759,lexicon_fallback
+Citrix Systems,Citrix Systems reportedly in early talks with potential acquirer,-1.0,lexicon_fallback
+Citrix Systems,Citrix Systems reports quarterly revenue in line with analyst expectations,0.871,lexicon_fallback
+Change Healthcare,Change Healthcare shares jump on report of takeover interest from private equity,-0.088,lexicon_fallback
+Change Healthcare,"Change Healthcare confirms it is exploring strategic alternatives, including a sale",-0.467,lexicon_fallback
+Change Healthcare,"Activist investor builds stake in Change Healthcare, pushes for board changes",-1.0,lexicon_fallback
+Change Healthcare,Change Healthcare reportedly in early talks with potential acquirer,-1.0,lexicon_fallback
+Change Healthcare,Change Healthcare reports quarterly revenue in line with analyst expectations,1.0,lexicon_fallback
+Activision Blizzard,Activision Blizzard shares jump on report of takeover interest from private equity,-0.042,lexicon_fallback
+Activision Blizzard,"Activision Blizzard confirms it is exploring strategic alternatives, including a sale",-1.0,lexicon_fallback
+Activision Blizzard,"Activist investor builds stake in Activision Blizzard, pushes for board changes",-1.0,lexicon_fallback
+Activision Blizzard,Activision Blizzard reportedly in early talks with potential acquirer,-1.0,lexicon_fallback
+Activision Blizzard,Activision Blizzard reports quarterly revenue in line with analyst expectations,0.845,lexicon_fallback
+Palo Alto Networks,Palo Alto Networks reports quarterly revenue in line with analyst expectations,1.0,lexicon_fallback
+Palo Alto Networks,Palo Alto Networks shares jump on report of takeover interest from private equity,0.229,lexicon_fallback
+Salesforce,Salesforce reports quarterly revenue in line with analyst expectations,-0.008,lexicon_fallback
+Salesforce,Salesforce shares jump on report of takeover interest from private equity,-0.099,lexicon_fallback
+VMware,VMware shares jump on report of takeover interest from private equity,-0.119,lexicon_fallback
+VMware,"VMware confirms it is exploring strategic alternatives, including a sale",-0.632,lexicon_fallback
+VMware,"Activist investor builds stake in VMware, pushes for board changes",-1.0,lexicon_fallback
+VMware,VMware reportedly in early talks with potential acquirer,-0.796,lexicon_fallback
+VMware,VMware reports quarterly revenue in line with analyst expectations,0.548,lexicon_fallback
+CrowdStrike Holdings,CrowdStrike Holdings reports quarterly revenue in line with analyst expectations,1.0,lexicon_fallback
+CrowdStrike Holdings,CrowdStrike Holdings shares jump on report of takeover interest from private equity,-0.591,lexicon_fallback
+Veeva Systems,Veeva Systems reports quarterly revenue in line with analyst expectations,0.288,lexicon_fallback
+Veeva Systems,Veeva Systems shares jump on report of takeover interest from private equity,-0.107,lexicon_fallback
+Slack Technologies,Slack Technologies shares jump on report of takeover interest from private equity,-0.315,lexicon_fallback
+Slack Technologies,"Slack Technologies confirms it is exploring strategic alternatives, including a sale",-0.943,lexicon_fallback
+Slack Technologies,"Activist investor builds stake in Slack Technologies, pushes for board changes",-0.214,lexicon_fallback
+Slack Technologies,Slack Technologies reportedly in early talks with potential acquirer,-1.0,lexicon_fallback
+Slack Technologies,Slack Technologies reports quarterly revenue in line with analyst expectations,0.782,lexicon_fallback
+Paylocity Holding,Paylocity Holding reports quarterly revenue in line with analyst expectations,1.0,lexicon_fallback
+Paylocity Holding,Paylocity Holding shares jump on report of takeover interest from private equity,0.173,lexicon_fallback
+Workday,Workday reports quarterly revenue in line with analyst expectations,0.938,lexicon_fallback
+Workday,Workday shares jump on report of takeover interest from private equity,-0.072,lexicon_fallback
+Atlassian,Atlassian reports quarterly revenue in line with analyst expectations,1.0,lexicon_fallback
+Atlassian,Atlassian shares jump on report of takeover interest from private equity,0.182,lexicon_fallback
+Cerner Corporation,Cerner Corporation shares jump on report of takeover interest from private equity,-0.362,lexicon_fallback
+Cerner Corporation,"Cerner Corporation confirms it is exploring strategic alternatives, including a sale",-1.0,lexicon_fallback
+Cerner Corporation,"Activist investor builds stake in Cerner Corporation, pushes for board changes",-0.988,lexicon_fallback
+Cerner Corporation,Cerner Corporation reportedly in early talks with potential acquirer,-1.0,lexicon_fallback
+Cerner Corporation,Cerner Corporation reports quarterly revenue in line with analyst expectations,1.0,lexicon_fallback
+ServiceNow,ServiceNow reports quarterly revenue in line with analyst expectations,0.7,lexicon_fallback
+ServiceNow,ServiceNow shares jump on report of takeover interest from private equity,0.34,lexicon_fallback
+UserTesting,UserTesting shares jump on report of takeover interest from private equity,0.067,lexicon_fallback
+UserTesting,"UserTesting confirms it is exploring strategic alternatives, including a sale",-0.969,lexicon_fallback
+UserTesting,"Activist investor builds stake in UserTesting, pushes for board changes",-1.0,lexicon_fallback
+UserTesting,UserTesting reportedly in early talks with potential acquirer,-1.0,lexicon_fallback
+UserTesting,UserTesting reports quarterly revenue in line with analyst expectations,0.301,lexicon_fallback
+Adobe,Adobe reports quarterly revenue in line with analyst expectations,0.604,lexicon_fallback
+Adobe,Adobe shares jump on report of takeover interest from private equity,0.127,lexicon_fallback
+Coupa Software,Coupa Software shares jump on report of takeover interest from private equity,-0.745,lexicon_fallback
+Coupa Software,"Coupa Software confirms it is exploring strategic alternatives, including a sale",-0.704,lexicon_fallback
+Coupa Software,"Activist investor builds stake in Coupa Software, pushes for board changes",-1.0,lexicon_fallback
+Coupa Software,Coupa Software reportedly in early talks with potential acquirer,-0.735,lexicon_fallback
+Coupa Software,Coupa Software reports quarterly revenue in line with analyst expectations,0.704,lexicon_fallback
+SailPoint Technologies,SailPoint Technologies shares jump on report of takeover interest from private equity,0.273,lexicon_fallback
+SailPoint Technologies,"SailPoint Technologies confirms it is exploring strategic alternatives, including a sale",-0.954,lexicon_fallback
+SailPoint Technologies,"Activist investor builds stake in SailPoint Technologies, pushes for board changes",-1.0,lexicon_fallback
+SailPoint Technologies,SailPoint Technologies reportedly in early talks with potential acquirer,-0.563,lexicon_fallback
+SailPoint Technologies,SailPoint Technologies reports quarterly revenue in line with analyst expectations,1.0,lexicon_fallback
+Fortinet,Fortinet reports quarterly revenue in line with analyst expectations,0.977,lexicon_fallback
+Fortinet,Fortinet shares jump on report of takeover interest from private equity,-0.096,lexicon_fallback
+Roper Technologies,Roper Technologies reports quarterly revenue in line with analyst expectations,0.944,lexicon_fallback
+Roper Technologies,Roper Technologies shares jump on report of takeover interest from private equity,-0.341,lexicon_fallback

@@ -1,0 +1,41 @@
+company,sector,acquisition_score,was_acquired,ma_rumor_mentions_6m,avg_news_sentiment,analyst_target_gap_pct,activist_investor_present
+Datto Holding,MSP Software,0.93518716,1,2,-0.3354,16.03,0
+Zendesk,Customer Support SaaS,0.93518716,1,3,-0.4484,22.73,0
+Citrix Systems,Enterprise Software,0.93518716,1,1,-0.2964,22.77,0
+Zynga,Gaming,0.93518716,1,3,-0.4397999999999999,23.72,0
+Slack Technologies,Collaboration SaaS,0.93518716,1,5,-0.3379999999999999,18.34,0
+Cerner Corporation,Healthcare IT,0.93518716,1,1,-0.47,26.59,0
+UserTesting,UX Research SaaS,0.9348639,1,3,-0.5202,23.28,0
+Twitter,Social Media,0.9348639,1,4,-0.2568,18.47,0
+ForgeRock,Identity Security SaaS,0.9348639,1,6,-0.5072,38.91,1
+Change Healthcare,Healthcare IT,0.9348639,1,3,-0.311,38.06,1
+Splunk,Data/Security SaaS,0.9304857,1,5,-0.3186,30.14,1
+Anaplan,Planning SaaS,0.9304857,1,3,-0.3823999999999999,17.5,0
+Coupa Software,Procurement SaaS,0.9301408,1,1,-0.496,29.2,0
+Qualtrics International,Experience Mgmt SaaS,0.9301408,1,2,-0.3823999999999999,26.46,0
+Mandiant,Cybersecurity,0.9281724,1,3,-0.4108,31.39,0
+Ping Identity,Identity Security SaaS,0.9281724,1,4,-0.4147999999999999,24.34,1
+Nuance Communications,AI/Speech Software,0.9281724,1,2,-0.635,25.37,1
+Activision Blizzard,Gaming,0.92427856,1,5,-0.4394,32.32,1
+VMware,Enterprise Software,0.92427856,1,1,-0.3998,28.17,1
+SailPoint Technologies,Identity Security SaaS,0.92241055,1,3,-0.2488,12.37,0
+Salesforce,Collaboration SaaS,0.7748576,0,0,-0.0535,-5.63,0
+HubSpot,Marketing SaaS,0.082501285,0,2,0.0705,23.98,0
+CrowdStrike Holdings,Cybersecurity,0.0790259,0,3,0.2045,10.93,0
+Veeva Systems,Healthcare IT,0.0779053,0,0,0.0905,20.48,0
+Paylocity Holding,HR SaaS,0.073160775,0,6,0.5865,21.63,0
+Fortinet,Cybersecurity,0.07115862,0,2,0.4405,18.29,0
+Atlassian,Collaboration SaaS,0.07080786,0,4,0.591,23.95,0
+Paycom Software,HR SaaS,0.07080786,0,3,0.601,19.52,0
+Cadence Design Systems,Semiconductor Software,0.06714827,0,1,0.2319999999999999,32.21,0
+Trimble,Enterprise Software,0.06714827,0,0,0.397,3.44,0
+Synopsys,Semiconductor Software,0.06714827,0,0,0.265,28.28,1
+Workday,Enterprise Software,0.06714827,0,1,0.433,23.42,0
+ServiceNow,Enterprise Software,0.06714827,0,2,0.52,6.37,0
+Palo Alto Networks,Cybersecurity,0.066815846,0,2,0.6145,25.76,0
+Autodesk,Enterprise Software,0.066815846,0,0,0.3785,20.21,1
+Datadog,Data/Security SaaS,0.066815846,0,1,0.29,19.3,0
+Take-Two Interactive,Gaming,0.066815846,0,2,0.2454999999999999,0.76,0
+Intuit,Fintech SaaS,0.066815846,0,4,0.364,20.24,0
+Adobe,Enterprise Software,0.066815846,0,3,0.3655,9.82,0
+Roper Technologies,Diversified Software,0.066815846,0,5,0.3015,2.19,0
