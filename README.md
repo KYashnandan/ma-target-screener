@@ -68,3 +68,13 @@ Larger universe (500+), time-based validation, exact pre-announcement windows, a
 ## Offline demo (synthetic data)
 
 The original pipeline (`data_ingestion.py` through `predict_targets.py`, run via `run_pipeline.sh`) uses real labels but synthetic financials, template headlines and a keyword sentiment fallback. It exists to show the full pipeline offline and its AUC of 1.0 on a 10-company split is not meaningful. The real-data results above are the ones to cite.
+
+## Website and API
+`docs/index.html` is the project site (3D results view, explorer, model results), hosted with GitHub Pages from `/docs`. All numbers load from `docs/data/results.json`, built by `src/build_results.py` from the real run. `server.py` (FastAPI) adds live scoring: `uvicorn server:app --port 8000`, then open http://localhost:8000. Endpoints: `/api/health`, `/api/analyse`, `/api/extract` (CSV upload).
+
+```mermaid
+flowchart LR
+A[SEC EDGAR financials] --> D[11 features]
+B[Google News headlines] --> C[FinBERT sentiment] --> D
+D --> E[XGBoost] --> F[Ranked targets] --> G[FastAPI + website]
+```

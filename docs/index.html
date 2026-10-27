@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DealRadar: M&amp;A Target Intelligence Engine</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#e9e8e4;--ink:#1d1d1b;--mut:#6b6a66;--line:#cfcdc7;--rust:#b5532b;--slate:#5d6b73;--card:#f3f2ef}
+@media(prefers-color-scheme:dark){:root{--bg:#222220;--ink:#ecebe7;--mut:#a3a29d;--line:#3a3a37;--card:#2b2b28}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 'IBM Plex Sans',system-ui,sans-serif}
+h1,h2,h3{font-family:'Bricolage Grotesque',system-ui,sans-serif;line-height:1.15;margin:0 0 .6rem}
+section{max-width:960px;margin:0 auto;padding:3.5rem 1.2rem;border-top:1px solid var(--line)}h2{font-size:1.7rem}
+#hero{position:relative;height:100vh;min-height:520px;background:#2b2b28;color:#ecebe7;overflow:hidden}
+#cv{position:absolute;inset:0;width:100%;height:100%;touch-action:none}
+.ov{position:absolute;left:1.2rem;top:1.2rem;max-width:420px;pointer-events:none}.ov h1{font-size:clamp(1.6rem,4vw,2.6rem)}.ov p{color:#b8b7b2;margin:0}
+#panel{position:absolute;right:1rem;top:1rem;width:230px;background:rgba(30,30,28,.85);border:1px solid #444;padding:.9rem;border-radius:6px;font-size:.88rem}
+#panel button{display:block;width:100%;margin:.25rem 0;padding:.4rem;background:none;border:1px solid #555;color:#ecebe7;border-radius:4px;cursor:pointer;font:inherit}
+#panel button.on{background:var(--rust);border-color:var(--rust)}.lg i{display:inline-block;width:11px;height:11px;margin-right:6px;border-radius:2px}
+#det{margin-top:.6rem;color:#d8d7d2;min-height:5.5em}
+@media(max-width:640px){#panel{top:auto;bottom:0;right:0;left:0;width:auto;border-radius:0}.ov{max-width:70%}}
+.grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}.card{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:1rem}
+.big{font:700 2rem 'Bricolage Grotesque',sans-serif;color:var(--rust)}.mut{color:var(--mut);font-size:.9rem}
+ol li{margin:.4rem 0}.bar{display:flex;align-items:center;gap:.6rem;margin:.35rem 0;font-size:.9rem}.bar span:first-child{width:170px;flex:none}
+.bar b{display:block;height:14px;background:var(--rust);border-radius:2px}.bar em{font-style:normal;color:var(--mut)}
+table{border-collapse:collapse;width:100%;font-size:.85rem}th,td{padding:.35rem .5rem;border-bottom:1px solid var(--line);text-align:left}.tw{overflow-x:auto;max-height:420px}
+input,select,button.a{font:inherit;padding:.4rem .6rem;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:4px}button.a{background:var(--rust);color:#fff;border:0;cursor:pointer}button:disabled,input:disabled{opacity:.45;cursor:not-allowed}
+.f{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.5rem;margin:.6rem 0}.f label{font-size:.78rem;color:var(--mut);display:block}svg text{fill:var(--mut);font-size:11px}
+</style></head><body>
+<div id="hero"><canvas id="cv"></canvas>
+<div class="ov"><h1>DealRadar: M&amp;A Target Intelligence Engine</h1><p>Each column is a company. Height is its out-of-fold acquisition score. Drag to rotate, click a column.</p></div>
+<div id="panel"><b>Dataset</b><div id="ds"></div><div class="lg" style="margin-top:.5rem"><div><i style="background:#b5532b"></i>Acquired 2021-23</div><div><i style="background:#8fa3ad"></i>Stayed independent</div></div><div id="det">Click a column for details.</div></div></div>
+<section><h2>What it does</h2><p id="plain"></p></section>
+<section><h2>How it works</h2><ol><li>Take 20 companies acquired in 2021-23 and 20 comparable ones that stayed independent.</li><li>Pull each company's financials from SEC EDGAR for the year before the deal.</li><li>Collect that year's Google News headlines and score each with FinBERT.</li><li>Combine 7 financial and 4 sentiment features and train XGBoost.</li><li>Score every company out-of-fold and rank them.</li></ol>
+<svg viewBox="0 0 900 90" width="100%" role="img" aria-label="Pipeline workflow"><g fill="none" stroke="#b5532b" stroke-width="1.5"><rect x="5" y="25" width="150" height="40" rx="5"/><rect x="190" y="25" width="150" height="40" rx="5"/><rect x="375" y="25" width="150" height="40" rx="5"/><rect x="560" y="25" width="150" height="40" rx="5"/><rect x="745" y="25" width="150" height="40" rx="5"/><path d="M155 45h35M340 45h35M525 45h35M710 45h35"/></g><g text-anchor="middle"><text x="80" y="50">SEC EDGAR</text><text x="265" y="50">Google News</text><text x="450" y="50">FinBERT</text><text x="635" y="50">XGBoost</text><text x="820" y="50">Ranked targets</text></g></svg></section>
+<section><h2>Latest results</h2><div class="grid" id="kpi"></div><h3 style="margin-top:1.5rem">Score by rank (out-of-fold)</h3><svg id="curve" viewBox="0 0 600 160" width="100%"></svg></section>
+<section><h2>Explore the output</h2><p><input id="q" placeholder="Filter company"> <select id="sel"><option value="">All</option><option value="1">Acquired</option><option value="0">Independent</option></select> <button class="a" id="dl">Download CSV</button></p><div class="tw"><table id="tb"></table></div></section>
+<section><h2>Model results</h2><h3>Does each data source help?</h3><div id="abl"></div><h3 style="margin-top:1.2rem">Confusion matrix and per-class scores</h3><div class="grid" id="cm"></div><h3 style="margin-top:1.2rem">Top features</h3><div id="imp"></div>
+<p class="mut" style="margin-top:1rem"><b>Limits:</b> only 40 companies, so the AUC band is wide. Headline counts vary by company, and for some deals the snapshot year overlaps the announcement date, so some leakage is possible. No price, ownership or valuation data. This is a prototype, not a trading signal.</p></section>
+<section><h2>Try it live</h2><p class="mut">Live scores use the model fit on all 40 companies, so those 40 are in-sample; the charts above use out-of-fold scores.</p><p class="mut" id="srv">Checking API server...</p><div class="f" id="inp"></div><button class="a" id="go" disabled>Score company</button> <b id="out"></b>
+<h3 style="margin-top:1.5rem">Upload your own CSV</h3><p class="mut">Needs the 11 feature columns plus a company column.</p><input type="file" id="fu" accept=".csv" disabled> <button class="a" id="up" disabled>Score CSV</button><div class="tw"><table id="ut"></table></div></section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+const $=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),f2=x=>x==null?'n/a':(+x).toFixed(3);
+const API=location.hostname.endsWith('github.io')||location.protocol==='file:'?'http://localhost:8000':'';let R,sel=null;
+fetch('data/results.json').then(r=>r.json()).then(d=>{R=d;init()}).catch(()=>{$('#det').textContent='Could not load data/results.json'});
+function init(){
+ $('#plain').textContent=`DealRadar scores how likely a public software or gaming company is to be acquired. It was tested on ${R.n} real companies (${R.n_acquired} acquired, ${R.n-R.n_acquired} not), using their SEC financials and ${R.n_headlines} news headlines read by FinBERT.`;
+ const t10=R.top10_acquired;$('#kpi').innerHTML=[[R.cv.auc.toFixed(2)+' ± '+R.cv.std.toFixed(2),'Cross-validated AUC (5×5 folds)'],[R.top5_acquired+' / 5','Top 5 that were acquired'],[t10+' / 10','Top 10 that were acquired (base rate 50%)'],[R.n_headlines,'Headlines scored']].map(a=>`<div class="card"><div class="big">${esc(a[0])}</div><div class="mut">${esc(a[1])}</div></div>`).join('');
+ const c=R.score_curve,w=600,h=160;$('#curve').innerHTML=`<polyline fill="none" stroke="#b5532b" stroke-width="2" points="${c.map((v,i)=>`${30+i*(w-50)/(c.length-1)},${h-20-v*(h-40)}`).join(' ')}"/><text x="2" y="${h-20}">0</text><text x="2" y="24">1</text><text x="${w/2-30}" y="${h-4}">rank (high to low)</text>`;
+ const mx=Math.max(...Object.values(R.ablation).map(a=>a.auc));$('#abl').innerHTML=Object.entries(R.ablation).map(([k,a])=>`<div class="bar"><span>${esc(k)}</span><b style="width:${a.auc/mx*50}%"></b><em>AUC ${a.auc} ± ${a.std}</em></div>`).join('');
+ const m=R.confusion;$('#cm').innerHTML=`<div class="card"><b>Confusion (threshold 0.5)</b><table><tr><td></td><td>Pred. no</td><td>Pred. yes</td></tr><tr><td>Actual no</td><td>${m.tn}</td><td>${m.fp}</td></tr><tr><td>Actual yes</td><td>${m.fn}</td><td>${m.tp}</td></tr></table></div>`+Object.entries(R.per_class).map(([k,v])=>`<div class="card"><b>${esc(k)}</b><div class="mut">Precision ${v.precision} · Recall ${v.recall} · F1 ${v.f1} · n=${v.support}</div></div>`).join('');
+ const im=R.importance.slice(0,6),iM=im[0].value;$('#imp').innerHTML=im.map(a=>`<div class="bar"><span>${esc(a.feature)}</span><b style="width:${a.value/iM*50}%"></b><em>${a.value}</em></div>`).join('');
+ $('#inp').innerHTML=R.feature_columns.map(k=>`<div><label>${esc(k)}</label><input data-k="${esc(k)}" type="number" step="any" disabled></div>`).join('');
+ ds();table();scene();health()}
+function table(){const q=$('#q').value.toLowerCase(),s=$('#sel').value,rows=R.rows.filter(r=>r.company.toLowerCase().includes(q)&&(s===''||String(r.was_acquired)===s));
+ $('#tb').innerHTML='<tr><th>Company</th><th>Sector</th><th>Acquired</th><th>Score</th></tr>'+rows.map(r=>`<tr><td>${esc(r.company)}</td><td>${esc(r.sector)}</td><td>${r.was_acquired?'Yes':'No'}</td><td>${f2(r.acq_score_oof)}</td></tr>`).join('');return rows}
+$('#q').oninput=$('#sel').onchange=table;
+$('#dl').onclick=()=>{const rows=table(),k=Object.keys(R.rows[0]),csv=[k.join(',')].concat(rows.map(r=>k.map(x=>JSON.stringify(r[x]??'')).join(','))).join('\n'),a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));a.download='dealradar_rankings.csv';a.click()};
+let filt='all',bars=[];function ds(){$('#ds').innerHTML=[['all','All 40'],['1','Acquired'],['0','Independent']].map(([v,l])=>`<button data-v="${v}" class="${v===filt?'on':''}">${l}</button>`).join('');
+ $('#ds').querySelectorAll('button').forEach(b=>b.onclick=()=>{filt=b.dataset.v;ds();bars.forEach(m=>m.visible=filt==='all'||String(m.userData.r.was_acquired)===filt)})}
+function pick(r){sel=r;$('#det').innerHTML=`<b>${esc(r.company)}</b><br>${esc(r.sector)}<br>Score ${f2(r.acq_score_oof)} · ${r.was_acquired?'was acquired':'stayed independent'}<br>Op. margin ${f2(r.op_margin)} · Avg sentiment ${f2(r.avg_sent)}`;
+ document.querySelectorAll('#inp input').forEach(i=>i.value=r[i.dataset.k]??'')}
+function scene(){const cv=$('#cv'),rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+ try{if(!window.THREE)throw 0;const ren=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true}),sc=new THREE.Scene(),cam=new THREE.PerspectiveCamera(45,1,.1,100),g=new THREE.Group();sc.add(g);
+  sc.add(new THREE.AmbientLight(0xffffff,.7));const dl=new THREE.DirectionalLight(0xffffff,.8);dl.position.set(5,10,7);sc.add(dl);
+  R.rows.forEach((r,i)=>{const hgt=Math.max(.05,r.acq_score_oof*4),m=new THREE.Mesh(new THREE.BoxGeometry(.7,1,.7),new THREE.MeshLambertMaterial({color:r.was_acquired?0xb5532b:0x8fa3ad}));
+   m.position.set((i%8-3.5)*1.1,0,(Math.floor(i/8)-2)*1.1);m.userData={r,hgt};m.scale.y=rm?hgt:.01;m.position.y=m.scale.y/2;g.add(m);bars.push(m)});
+  let rx=.5,ry=.6,drag=0,lx,ly,mv=0;const rs=()=>{const w=cv.clientWidth,h=cv.clientHeight;ren.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix()};rs();addEventListener('resize',rs);
+  cam.position.set(0,7,11);cam.lookAt(0,1,0);
+  cv.onpointerdown=e=>{drag=1;mv=0;lx=e.clientX;ly=e.clientY};addEventListener('pointerup',()=>drag=0);
+  cv.onpointermove=e=>{if(!drag)return;mv+=Math.abs(e.clientX-lx)+Math.abs(e.clientY-ly);ry+=(e.clientX-lx)*.01;rx=Math.max(.1,Math.min(1.2,rx+(e.clientY-ly)*.005));lx=e.clientX;ly=e.clientY};
+  cv.onclick=e=>{if(mv>5)return;const b=cv.getBoundingClientRect(),rc=new THREE.Raycaster();rc.setFromCamera({x:(e.clientX-b.left)/b.width*2-1,y:-((e.clientY-b.top)/b.height)*2+1},cam);const h=rc.intersectObjects(bars.filter(x=>x.visible))[0];if(h)pick(h.object.userData.r)};
+  (function loop(){g.rotation.y=ry;g.rotation.x=rx-.5;bars.forEach(m=>{if(m.scale.y<m.userData.hgt){m.scale.y=Math.min(m.userData.hgt,m.scale.y+.06);}m.position.y=m.scale.y/2});ren.render(sc,cam);requestAnimationFrame(loop)})()
+ }catch(e){const s=[...R.rows].sort((a,b)=>b.acq_score_oof-a.acq_score_oof).slice(0,12);cv.outerHTML='<div style="padding:7rem 1.2rem 1rem">'+s.map(r=>`<div class="bar"><span>${esc(r.company)}</span><b style="width:${r.acq_score_oof*50}%;background:${r.was_acquired?'#b5532b':'#8fa3ad'}"></b></div>`).join('')+'</div>'}}
+async function health(){try{const r=await fetch(API+'/api/health');if(!r.ok)throw 0;$('#srv').textContent='API server connected.';document.querySelectorAll('#inp input,#go,#fu,#up').forEach(e=>e.disabled=false)}catch(e){$('#srv').textContent='API server is not running, so live scoring is disabled. Start it with: uvicorn server:app --port 8000'}}
+$('#go').onclick=async()=>{const b={};document.querySelectorAll('#inp input').forEach(i=>b[i.dataset.k]=i.value===''?null:+i.value);const r=await(await fetch(API+'/api/analyse',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(b)})).json();$('#out').textContent='Acquisition score: '+f2(r.acquisition_score)+(r.missing.length?' ('+r.missing.length+' inputs missing)':'')};
+$('#up').onclick=async()=>{const f=$('#fu').files[0];if(!f)return;const fd=new FormData();fd.append('file',f);const r=await fetch(API+'/api/extract',{method:'POST',body:fd}),j=await r.json();$('#ut').innerHTML=r.ok?'<tr><th>Company</th><th>Score</th></tr>'+j.rows.map(x=>`<tr><td>${esc(Object.values(x)[0])}</td><td>${f2(x.acquisition_score)}</td></tr>`).join(''):'<tr><td>'+esc(j.detail)+'</td></tr>'};
+</script></body></html>

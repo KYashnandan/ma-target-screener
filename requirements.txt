@@ -8,3 +8,6 @@ requests>=2.31
 # Real FinBERT sentiment (recommended: run in Colab or a machine with >4GB free disk)
 transformers>=4.35
 torch>=2.0
+fastapi>=0.110
+uvicorn>=0.29
+python-multipart>=0.0.9
