@@ -16,10 +16,15 @@ p = (r.acq_score_oof >= .5).astype(int); tn, fp, fn, tp = confusion_matrix(r.was
 pr, rc, f1, sp = precision_recall_fscore_support(r.was_acquired, p)
 rows = r.merge(f[["company"] + ALL], on="company").round(4).where(lambda d: d.notna(), None).to_dict("records")
 top = r.sort_values("acq_score_oof", ascending=False)
-json.dump({"n": len(f), "n_acquired": int(y.sum()), "n_headlines": int(f.n_headlines.sum()), "feature_columns": ALL,
+def clean(o):
+    if isinstance(o, float) and (o != o or o in (float('inf'), float('-inf'))): return None
+    if isinstance(o, dict): return {k: clean(v) for k, v in o.items()}
+    if isinstance(o, list): return [clean(v) for v in o]
+    return o
+json.dump(clean({"n": len(f), "n_acquired": int(y.sum()), "n_headlines": int(f.n_headlines.sum()), "feature_columns": ALL,
   "cv": abl["Financials + sentiment"], "ablation": abl, "importance": [{"feature": a, "value": round(b,4)} for a, b in imp],
   "confusion": {"tn": int(tn), "fp": int(fp), "fn": int(fn), "tp": int(tp)},
   "per_class": {k: {"precision": round(float(pr[i]),3), "recall": round(float(rc[i]),3), "f1": round(float(f1[i]),3), "support": int(sp[i])} for i, k in enumerate(["Independent","Acquired"])},
   "top5_acquired": int(top.head(5).was_acquired.sum()), "top10_acquired": int(top.head(10).was_acquired.sum()),
-  "score_curve": [round(float(x),3) for x in top.acq_score_oof], "rows": rows}, open("docs/data/results.json", "w"))
+  "score_curve": [round(float(x),3) for x in top.acq_score_oof], "rows": rows}), open("docs/data/results.json", "w"), allow_nan=False)
 print(abl, tp, fp, fn, tn)

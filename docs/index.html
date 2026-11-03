@@ -39,7 +39,7 @@ input,select,button.a{font:inherit;padding:.4rem .6rem;background:var(--card);co
 <script>
 const $=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),f2=x=>x==null?'n/a':(+x).toFixed(3);
 const API=location.hostname.endsWith('github.io')||location.protocol==='file:'?'http://localhost:8000':'';let R,sel=null;
-fetch('data/results.json').then(r=>r.json()).then(d=>{R=d;init()}).catch(()=>{$('#det').textContent='Could not load data/results.json'});
+fetch('data/results.json').then(r=>r.json()).then(d=>{R=d;init()}).catch(e=>{$('#det').textContent='Error: '+e.message;console.error(e)});
 function init(){
  $('#plain').textContent=`DealRadar scores how likely a public software or gaming company is to be acquired. It was tested on ${R.n} real companies (${R.n_acquired} acquired, ${R.n-R.n_acquired} not), using their SEC financials and ${R.n_headlines} news headlines read by FinBERT.`;
  const t10=R.top10_acquired;$('#kpi').innerHTML=[[R.cv.auc.toFixed(2)+' ± '+R.cv.std.toFixed(2),'Cross-validated AUC (5×5 folds)'],[R.top5_acquired+' / 5','Top 5 that were acquired'],[t10+' / 10','Top 10 that were acquired (base rate 50%)'],[R.n_headlines,'Headlines scored']].map(a=>`<div class="card"><div class="big">${esc(a[0])}</div><div class="mut">${esc(a[1])}</div></div>`).join('');
